@@ -1,4 +1,6 @@
-﻿using CAApp.Infrastructure.Data;
+﻿using CAApp.Core.Interfaces;
+using CAApp.Infrastructure.Data;
+using CAApp.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +14,8 @@ namespace CAApp.Infrastructure
             {
                 options.UseSqlServer("Server=DATX107_SOFT;Database=CAAppDb;Trusted_connection=true;TrustServerCertificate=True;");
             });
+
+            service.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             return service;
         }

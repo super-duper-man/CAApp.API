@@ -19,4 +19,8 @@
     <ProjectReference Include="..\CAApp.Infrastructure\CAApp.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
