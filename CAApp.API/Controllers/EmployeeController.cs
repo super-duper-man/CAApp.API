@@ -17,6 +17,17 @@ namespace CAApp.API.Controllers
             return Results.Ok(result);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IResult> GetEmployeeByID(int id)
+        {
+            var employee = await sender.Send(new GetEmployeeByIdQuery(id));
+
+            if (employee is null)
+                return Results.NotFound();
+
+            return Results.Ok(employee);
+        }
+
         [HttpPost]
         public async Task<IResult> AddEmployee([FromBody] EmployeeEntity employee)
         {
