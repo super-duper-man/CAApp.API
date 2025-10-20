@@ -7,7 +7,7 @@ namespace CAApp.Core.Interfaces
         Task<IEnumerable<EmployeeEntity>> GetEmployees();
         Task<EmployeeEntity?> GetEmployeeByID(int id);
         Task<EmployeeEntity> AddEmployee(EmployeeEntity employee);
-        Task<EmployeeEntity> UpdateEmployee(int id, EmployeeEntity employee);
+        Task<EmployeeEntity?> UpdateEmployee(int id, EmployeeEntity employee);
         Task<bool> DeleteEmployee(int id);
     }
 }

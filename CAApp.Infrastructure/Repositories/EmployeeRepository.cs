@@ -24,11 +24,11 @@ namespace CAApp.Infrastructure.Repositories
             return employee;
         }
 
-        public async Task<EmployeeEntity> UpdateEmployee(int id, EmployeeEntity employee)
+        public async Task<EmployeeEntity?> UpdateEmployee(int id, EmployeeEntity employee)
         {
             var _employee = await dbContext.Employees.FirstOrDefaultAsync(x => x.Id == id);
             if (_employee == null) {
-                throw new NotImplementedException();
+                return null;
             }
 
             _employee.Email = employee.Email;

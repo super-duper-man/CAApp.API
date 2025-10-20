@@ -34,5 +34,15 @@ namespace CAApp.API.Controllers
             var result = await sender.Send(new AddEmployeeCommand(employee));
             return Results.Ok(result);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IResult> UpdateEmployee(int id, [FromBody] EmployeeEntity employee)
+        {
+            var result = await sender.Send(new UpdateEmployeeCommand(id, employee));
+            if (result is null)
+                return Results.NotFound();
+
+            return Results.Ok(result);
+        }
     }
 }
