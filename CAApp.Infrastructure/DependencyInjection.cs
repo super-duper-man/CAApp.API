@@ -20,7 +20,10 @@ namespace CAApp.Infrastructure
 
             service.AddScoped<IEmployeeRepository, EmployeeRepository>();
             service.AddScoped<IExternalVendorRepository, ExternalVendorRepository>();
-            service.AddHttpClient<JokeHttpClientService>();
+            service.AddHttpClient<JokeHttpClientService>(options =>
+            {
+                options.BaseAddress = new Uri("https://official-joke-api.appspot.com");
+            });
 
             return service;
         }

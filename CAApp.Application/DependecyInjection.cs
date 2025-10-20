@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR.NotificationPublishers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CAApp.Application
@@ -11,7 +7,10 @@ namespace CAApp.Application
     {
         public static IServiceCollection AddApplicationDI(this IServiceCollection service)
         {
-            service.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(DependecyInjection).Assembly));
+            service.AddMediatR(cfg => { 
+                cfg.RegisterServicesFromAssembly(typeof(DependecyInjection).Assembly);
+                cfg.NotificationPublisher = new TaskWhenAllPublisher();
+            });
             return service;
         }
     }
