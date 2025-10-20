@@ -1,19 +1,20 @@
 ﻿using CAApp.Core.Interfaces;
+using CAApp.Core.Options;
 using CAApp.Infrastructure.Data;
 using CAApp.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace CAApp.Infrastructure
 {
     public static class DependecyInjection
     {
-        public static IServiceCollection AddInfrastructureDI(this IServiceCollection service, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureDI(this IServiceCollection service)
         {
-            service.AddDbContext<AppDbContext>(options =>
+            service.AddDbContext<AppDbContext>((provider, options) =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(provider.GetRequiredService<IOptionsSnapshot<ConnectionStringOptions>>().Value.DefaultConnection);
             });
 
             service.AddScoped<IEmployeeRepository, EmployeeRepository>();

@@ -1,4 +1,5 @@
 ﻿using CAApp.Application;
+using CAApp.Core;
 using CAApp.Infrastructure;
 
 namespace CAApp.API
@@ -8,7 +9,8 @@ namespace CAApp.API
         public static IServiceCollection AddAppDI(this IServiceCollection service, IConfiguration configuration)
         {
             service.AddApplicationDI()
-                   .AddInfrastructureDI(configuration);
+                   .AddInfrastructureDI()
+                   .AddCoreDI(configuration);
 
             return service;
         }
