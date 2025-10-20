@@ -2,17 +2,18 @@
 using CAApp.Infrastructure.Data;
 using CAApp.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CAApp.Infrastructure
 {
     public static class DependecyInjection
     {
-        public static IServiceCollection AddInfrastructureDI(this IServiceCollection service)
+        public static IServiceCollection AddInfrastructureDI(this IServiceCollection service, IConfiguration configuration)
         {
             service.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer("Server=DATX107_SOFT;Database=CAAppDb;Trusted_connection=true;TrustServerCertificate=True;");
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
 
             service.AddScoped<IEmployeeRepository, EmployeeRepository>();

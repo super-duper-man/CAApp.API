@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen(c =>
         Title = "My API V1"
     });
 });
-builder.Services.AddAppDI();
+builder.Services.AddAppDI(builder.Configuration);
 
 var app = builder.Build();
 
