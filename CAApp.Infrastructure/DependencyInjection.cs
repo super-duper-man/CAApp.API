@@ -2,6 +2,7 @@
 using CAApp.Core.Options;
 using CAApp.Infrastructure.Data;
 using CAApp.Infrastructure.Repositories;
+using CAApp.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -18,6 +19,8 @@ namespace CAApp.Infrastructure
             });
 
             service.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            service.AddScoped<IExternalVendorRepository, ExternalVendorRepository>();
+            service.AddHttpClient<JokeHttpClientService>();
 
             return service;
         }
