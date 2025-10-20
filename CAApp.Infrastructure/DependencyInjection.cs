@@ -10,7 +10,7 @@ namespace CAApp.Infrastructure
         {
             service.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer("Server=DATX107_SOFT;Database=EmplyeesDb;Trusted_connection=true;TrustServerCertificate=True;");
+                options.UseSqlServer("Server=DATX107_SOFT;Database=CAAppDb;Trusted_connection=true;TrustServerCertificate=True;");
             });
 
             return service;
