@@ -44,5 +44,15 @@ namespace CAApp.API.Controllers
 
             return Results.Ok(result);
         }
+        [HttpDelete("{id}")]
+        public async Task<IResult> DeleteEmployee(int id)
+        {
+            var result = await sender.Send(new DeleteEmployeeCommand(id));
+
+            if (result == false)
+                return Results.NotFound();
+
+            return Results.Ok(result);
+        }
     }
 }
