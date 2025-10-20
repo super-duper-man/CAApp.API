@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CAApp.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CAApp.Infrastructure
@@ -11,6 +8,11 @@ namespace CAApp.Infrastructure
     {
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection service)
         {
+            service.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer("Server=DATX107_SOFT;Database=EmplyeesDb;Trusted_connection=true;TrustServerCertificate=True;");
+            });
+
             return service;
         }
     }
