@@ -1,6 +1,3 @@
 @CAApp.API_HostAddress = http://localhost:5043
 
-GET {{CAApp.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
 ###

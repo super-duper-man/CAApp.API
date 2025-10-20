@@ -11,6 +11,7 @@ namespace CAApp.Application
     {
         public static IServiceCollection AddApplicationDI(this IServiceCollection service)
         {
+            service.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(DependecyInjection).Assembly));
             return service;
         }
     }
